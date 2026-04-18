@@ -1,0 +1,370 @@
+:root {
+    --primary: #a4212d;
+    --primary-dark: #801a23;
+    --bg: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text: #1a1a1a;
+    --text-muted: #666666;
+    --border: #eeeeee;
+    --container: 1140px;
+    --font-main: 'Inter', 'Noto Sans JP', sans-serif;
+    --shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); color: var(--text); line-height: 1.8; background: var(--bg); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; transition: 0.3s; }
+ul { list-style: none; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 30px; }
+
+/* ================================================
+   Header & Nav (Consistent across ALL pages)
+   ================================================ */
+header { height: 100px; display: flex; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.98); z-index: 2600; }
+header .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; transition: opacity 0.3s; }
+.logo:hover { opacity: 0.7; }
+.logo span { color: var(--primary); margin-left: 4px; }
+
+
+nav ul { display: flex; gap: 24px; align-items: center; }
+nav a { font-size: 13px; font-weight: 600; color: var(--text); position: relative; white-space: nowrap; }
+nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: 0.3s; }
+nav a:hover::after { width: 100%; }
+.header-right { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.cta-btn-nav { background: var(--primary); color: #fff !important; padding: 12px 24px; border-radius: 4px; font-size: 13px; font-weight: 700; border: 1px solid var(--primary); transition: 0.3s; white-space: nowrap; }
+.cta-btn-nav:hover { background: #fff; color: var(--primary) !important; }
+.cta-btn-nav::after { display: none; }
+
+
+/* ================================================
+   Floating Contact Button (FAB)
+   ================================================ */
+.fab { position: fixed; bottom: 40px; right: 40px; width: 180px; height: 60px; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 30px; font-weight: 700; font-size: 14px; box-shadow: 0 15px 45px rgba(164, 33, 45, 0.3); z-index: 3000; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); will-change: transform; }
+.fab:hover { transform: translateY(-5px) scale(1.05); background: var(--primary-dark); }
+
+/* ================================================
+   Scroll Reveal Animation
+   ================================================ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1); will-change: opacity, transform; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* ================================================
+   Common Section Styles
+   ================================================ */
+section { padding: 140px 0; }
+.section-header { margin-bottom: 80px; text-align: center; }
+.label { font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 15px; display: block; }
+.title-large { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; }
+
+/* ================================================
+   Evidence Bar
+   ================================================ */
+.evidence-bar { background: var(--bg-alt); padding: 80px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.evidence-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+.evidence-item .num { font-size: 52px; font-weight: 800; color: var(--primary); line-height: 1; margin-bottom: 10px; }
+.evidence-item .unit { font-size: 16px; margin-left: 4px; color: var(--text); }
+.evidence-item .txt { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
+/* ================================================
+   Grid & Cards
+   ================================================ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.card { padding: 50px; border: 1px solid var(--border); background: #fff; transition: 0.4s; height: 100%; border-radius: 4px; will-change: transform, box-shadow; }
+.card:hover { border-color: #ddd; transform: translateY(-5px); box-shadow: var(--shadow); }
+.card h3 { font-size: 22px; margin-bottom: 20px; font-weight: 700; }
+.card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+
+/* ================================================
+   Comparison Table
+   ================================================ */
+.comp-table { width: 100%; border-collapse: collapse; margin-top: 60px; border: 1px solid var(--border); }
+.comp-table th, .comp-table td { padding: 25px; text-align: center; font-size: 15px; border: 1px solid var(--border); }
+.comp-table th { background: var(--bg-alt); font-weight: 700; color: var(--text-muted); }
+.highlight { color: var(--primary); font-weight: 800; }
+
+/* ================================================
+   FAQ Accordion
+   ================================================ */
+.faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
+.faq-q { padding: 30px 0; font-weight: 700; font-size: 17px; display: flex; gap: 20px; align-items: center; cursor: pointer; transition: color 0.3s; user-select: none; }
+.faq-q:hover { color: var(--primary); }
+.faq-q::before { content: 'Q'; color: var(--primary); font-size: 24px; font-weight: 900; flex-shrink: 0; }
+.faq-q::after { content: '+'; margin-left: auto; font-size: 24px; color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.active .faq-q::after { transform: rotate(45deg); }
+.faq-a { max-height: 0; padding: 0 0 0 44px; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s, padding 0.4s; opacity: 0; font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+.faq-item.active .faq-a { max-height: 500px; padding: 10px 0 40px 44px; opacity: 1; }
+
+/* ================================================
+   Contact Form
+   ================================================ */
+.form-group { margin-bottom: 30px; }
+.form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+.form-control { width: 100%; padding: 16px; border: 1px solid #ddd; border-radius: 4px; font-size: 15px; font-family: inherit; transition: 0.3s; background: #fff; }
+.form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(164, 33, 45, 0.05); }
+textarea.form-control { resize: vertical; }
+
+/* ================================================
+   Step Flow (Services)
+   ================================================ */
+.step-flow { counter-reset: step; }
+.step-item { display: flex; gap: 30px; padding: 40px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.step-num { width: 48px; height: 48px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; flex-shrink: 0; }
+.step-content h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.step-content p { font-size: 14px; color: var(--text-muted); }
+
+/* ================================================
+   Company Info Table
+   ================================================ */
+.info-row { display: flex; padding: 40px 0; border-bottom: 1px solid var(--border); }
+.info-label { width: 280px; font-weight: 700; color: var(--text-muted); font-size: 14px; letter-spacing: 0.1em; flex-shrink: 0; }
+.info-value { flex: 1; font-weight: 700; font-size: 17px; }
+
+/* ================================================
+   Footer
+   ================================================ */
+footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
+.footer-grid { display: grid; grid-template-columns: 2.5fr 1fr 1.2fr 1fr; gap: 80px; margin-bottom: 100px; }
+.footer-logo { font-size: 22px; font-weight: 800; margin-bottom: 30px; }
+.footer-links h4 { font-size: 13px; margin-bottom: 30px; color: #fff; font-weight: 800; letter-spacing: 0.1em; }
+.footer-links li { margin-bottom: 15px; font-size: 13px; }
+.footer-links a { opacity: 0.6; }
+.footer-links a:hover { opacity: 1; color: var(--primary); }
+.footer-bottom { padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer-bottom p { font-size: 12px; opacity: 0.4; }
+
+/* ================================================
+   Header Phone
+   ================================================ */
+.header-phone { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.header-phone .phone-num { font-size: 16px; font-weight: 800; color: var(--primary); letter-spacing: 0.02em; white-space: nowrap; line-height: 1.2; }
+.header-phone .phone-hours { font-size: 10px; color: var(--text-muted); white-space: nowrap; }
+
+/* ================================================
+   Breadcrumb
+   ================================================ */
+.breadcrumb { padding: 16px 0; font-size: 12px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span { margin: 0 8px; }
+
+/* ================================================
+   News Section
+   ================================================ */
+.news-list { max-width: 800px; }
+.news-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+.news-date { font-size: 13px; color: var(--text-muted); flex-shrink: 0; width: 100px; font-weight: 600; }
+.news-title { font-size: 14px; font-weight: 600; }
+.news-title a:hover { color: var(--primary); }
+
+/* ================================================
+   Staff Cards
+   ================================================ */
+.staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.staff-card { text-align: center; padding: 40px 20px; border: 1px solid var(--border); border-radius: 4px; }
+.staff-photo { width: 100px; height: 100px; border-radius: 50%; background: var(--bg-alt); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--border); }
+.staff-card .staff-quote { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; font-style: italic; }
+.staff-card .staff-name { font-size: 16px; font-weight: 700; }
+
+/* ================================================
+   Group Enterprise
+   ================================================ */
+.group-bar { display: flex; gap: 60px; align-items: center; justify-content: center; padding: 30px 0; }
+.group-stat { text-align: center; }
+.group-stat .num { font-size: 36px; font-weight: 800; color: var(--primary); }
+.group-stat .txt { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+/* ================================================
+   Sub Navigation
+   ================================================ */
+.sub-nav { display: flex; gap: 20px; justify-content: center; padding: 20px 0; }
+.sub-nav a { font-size: 14px; font-weight: 600; color: var(--primary); padding: 12px 24px; border: 1px solid var(--primary); border-radius: 4px; transition: 0.3s; }
+.sub-nav a:hover { background: var(--primary); color: #fff; }
+
+/* ================================================
+   Hamburger Menu
+   ================================================ */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 3000; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 6px 0; transition: 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* ================================================
+   Responsive — Tablet (max-width: 1024px)
+   ================================================ */
+@media (max-width: 1024px) {
+    nav ul { gap: 16px; }
+    nav a { font-size: 12px; }
+    .header-phone .phone-num { font-size: 14px; }
+    section { padding: 80px 0; }
+    .section-header { margin-bottom: 50px; }
+    .title-large { font-size: 36px; }
+    .grid-2 { gap: 40px; }
+    .card { padding: 35px; }
+    .card h3 { font-size: 20px; }
+    .evidence-item .num { font-size: 40px; }
+}
+
+/* ================================================
+   Responsive — Mobile (max-width: 768px)
+   ================================================ */
+@media (max-width: 768px) {
+    .container { padding: 0 16px; }
+
+    /* Header */
+    header { height: 60px; }
+    .logo { font-size: 15px; }
+    .logo span { font-size: 15px; }
+    .hamburger { display: block; }
+    nav { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: #fff; z-index: 2500; padding: 80px 24px 40px; transition: right 0.3s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.1); overflow-y: auto; }
+    nav.open { right: 0; }
+    nav ul { flex-direction: column; gap: 0; align-items: stretch; }
+    nav ul li { border-bottom: 1px solid var(--border); }
+    nav a { display: block; padding: 16px 0; font-size: 15px; }
+    nav a::after { display: none; }
+    .header-right { display: none; }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2400; }
+    .nav-overlay.active { display: block; }
+
+    /* ===== CRITICAL: Override inline styles ===== */
+
+    /* Hero — index.html uses inline font-size:72px, padding:180px etc */
+    .hero-simple { padding: 100px 0 50px !important; }
+    .hero-simple h1 { font-size: 28px !important; line-height: 1.3 !important; margin-bottom: 20px !important; letter-spacing: -0.02em !important; }
+    .hero-simple p { font-size: 14px !important; margin-bottom: 28px !important; line-height: 1.8 !important; }
+    .hero-simple .cta-btn-nav { padding: 16px 32px !important; font-size: 14px !important; display: inline-block !important; }
+    .hero-actions { text-align: center; }
+
+    /* Page Headers — all sub-pages use inline padding:100px */
+    .page-header { padding: 70px 0 36px !important; }
+    .page-header .title-large { font-size: 24px !important; }
+
+    /* Sections — override inline padding on many sections */
+    section { padding: 50px 0 !important; }
+    .section-header { margin-bottom: 32px; }
+    .section-header h2 { font-size: 22px !important; }
+    .title-large { font-size: 22px !important; }
+    .label { font-size: 10px; margin-bottom: 8px; }
+
+    /* Grids — force single column */
+    .grid-2, .grid-3, .footer-grid, .staff-grid { grid-template-columns: 1fr !important; }
+    .grid-2 { gap: 24px !important; }
+    .grid-3 { gap: 20px !important; }
+
+    /* Evidence Bar */
+    .evidence-bar { padding: 36px 0 !important; }
+    .evidence-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px; }
+    .evidence-item .num { font-size: 32px; }
+    .evidence-item .txt { font-size: 12px; }
+
+    /* Cards */
+    .card { padding: 24px !important; }
+    .card h3 { font-size: 17px !important; margin-bottom: 12px; }
+    .card p { font-size: 13px; }
+    /* Dark cards (about.html group trust) */
+    .card div[style*="font-size: 36px"] { font-size: 24px !important; }
+
+    /* Comparison Table — prevent overflow */
+    .comp-table { font-size: 11px; }
+    .comp-table th, .comp-table td { padding: 10px 6px !important; font-size: 11px !important; word-break: break-all; }
+    .comp-table th:first-child, .comp-table td:first-child { min-width: 70px; background: var(--bg-alt); font-size: 11px !important; }
+    .comp-table { margin-top: 30px !important; }
+
+    /* FAQ */
+    .faq-q { font-size: 14px; padding: 18px 0; gap: 12px; }
+    .faq-q::before { font-size: 18px; }
+    .faq-q::after { font-size: 20px; }
+    .faq-a { font-size: 13px; }
+    .faq-item.active .faq-a { padding: 8px 0 24px 36px; }
+    .faq-list { margin: 0 !important; }
+
+    /* Company Info */
+    .info-row { flex-direction: column; gap: 4px; padding: 14px 0; }
+    .info-label { width: auto; font-size: 11px; letter-spacing: 0.05em; }
+    .info-value { font-size: 14px; }
+
+    /* Contact Form */
+    .form-control { padding: 14px; font-size: 14px; }
+    .contact-form div[style*="padding: 60px"] { padding: 24px !important; }
+    .contact-form .cta-btn-nav { width: 100% !important; }
+
+    /* Steps */
+    .step-item { flex-direction: column; gap: 12px; padding: 20px 0; }
+    .step-content h4 { font-size: 16px !important; }
+    .step-content p { font-size: 13px !important; }
+
+    /* News */
+    .news-item { flex-direction: column; gap: 4px; padding: 14px 0; }
+    .news-date { width: auto; font-size: 12px; }
+    .news-title { font-size: 13px; }
+
+    /* Staff */
+    .staff-grid { grid-template-columns: 1fr !important; gap: 16px; }
+    .staff-card { padding: 24px 16px !important; }
+    .staff-photo { width: 80px; height: 80px; }
+
+    /* Group Bar */
+    .group-bar { flex-direction: column; gap: 20px; padding: 20px 16px !important; }
+    .group-stat .num { font-size: 28px !important; }
+    .group-stat .txt { font-size: 12px; }
+
+    /* CTA Section — index.html uses inline styles */
+    section[style*="background: var(--primary)"] { padding: 60px 0 !important; }
+    section[style*="background: var(--primary)"] h2 { font-size: 22px !important; margin-bottom: 16px !important; }
+    section[style*="background: var(--primary)"] p { font-size: 13px !important; margin-bottom: 30px !important; }
+    section[style*="background: var(--primary)"] a[style] { padding: 16px 40px !important; font-size: 14px !important; }
+
+    /* Dark Sections (about group-trust, services salary) */
+    .group-trust, section[style*="background:#0c0c0c"], section[style*="background: #0c0c0c"] { padding: 60px 0 !important; }
+
+    /* About page mission image placeholder */
+    div[style*="height: 400px"] { height: 200px !important; }
+    /* CEO photo placeholder */
+    div[style*="height:350px"], div[style*="height: 350px"] { height: 200px !important; }
+
+    /* Sub Nav */
+    .sub-nav { flex-direction: column; align-items: stretch; gap: 10px; }
+    .sub-nav a { text-align: center; font-size: 13px; padding: 14px 20px; }
+
+    /* Footer */
+    footer { padding: 60px 0 30px !important; }
+    .footer-grid { gap: 24px !important; margin-bottom: 40px !important; }
+    .footer-logo { font-size: 18px; margin-bottom: 16px; }
+    .footer-links h4 { font-size: 13px; margin-bottom: 16px !important; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links li a { font-size: 13px; }
+    .footer-bottom p { font-size: 11px; }
+
+    /* FAB — full-width bottom bar on mobile */
+    .fab { width: calc(100% - 32px); height: 52px; bottom: 16px; left: 16px; right: 16px; border-radius: 8px; font-size: 14px; font-weight: 700; z-index: 2300; }
+    .fab span { display: inline; }
+    /* Hide FAB when hamburger menu is open */
+    .nav-overlay.active ~ .fab { display: none; }
+    /* Hide FAB on contact page (redundant) */
+    .page-contact .fab { display: none !important; }
+
+    /* Phone (hidden on mobile) */
+    .header-phone { display: none; }
+
+    /* Breadcrumb */
+    .breadcrumb { font-size: 11px; padding: 10px 0; }
+
+    /* Privacy content */
+    .privacy-content h2 { font-size: 16px !important; margin: 28px 0 14px !important; }
+    .privacy-content p { font-size: 14px !important; }
+
+    /* Generic text size overrides for inline styles */
+    p[style*="font-size: 20px"], p[style*="font-size:20px"] { font-size: 14px !important; }
+    p[style*="font-size: 18px"], p[style*="font-size:18px"] { font-size: 14px !important; }
+    p[style*="font-size: 16px"], p[style*="font-size:16px"] { font-size: 14px !important; }
+    div[style*="font-size: 36px"], div[style*="font-size:36px"] { font-size: 24px !important; }
+    p[style*="font-size: 18px;"] { font-size: 14px !important; }
+    h2[style*="font-size: 36px"] { font-size: 22px !important; }
+    p[style*="margin-bottom: 50px"] { margin-bottom: 24px !important; }
+    p[style*="margin-bottom: 56px"] { margin-bottom: 24px !important; }
+    div[style*="margin-top:40px"] a.cta-btn-nav { padding: 16px 32px !important; font-size: 14px !important; }
+}
