@@ -1,10 +1,96 @@
-const LOGO_URL='https://raw.githubusercontent.com/takashi-aoki-ybp/eps-corporate/main/logo.jpeg';
-const SITE_HEADER=`
-<header><div class="container"><a href="index.html" class="logo"><img src="${LOGO_URL}" alt="Enjin Payment Service" style="height:40px;width:auto;display:block;"></a><nav><ul><li><a href="index.html">ホーム</a></li><li><a href="about.html">私たちについて</a></li><li><a href="services.html">サービス</a></li><li><a href="company.html">会社情報</a></li><li><a href="security.html">安心への取り組み</a></li></ul></nav><div class="header-right"><div class="header-phone"><div><div class="phone-num">03-XXXX-XXXX</div><div class="phone-hours">平日 10:00～18:30</div></div></div><a href="contact.html" class="cta-btn-nav">お問い合わせ</a></div><button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button></div></header>
-<div class="nav-overlay"></div>
-`;
-const SITE_FAB=`<a href="contact.html" class="fab"><span>お問い合わせ</span></a>`;
-const SITE_FOOTER=`
-<footer><div class="container"><div class="footer-grid"><div><div class="footer-logo"><img src="${LOGO_URL}" alt="Enjin Payment Service" style="height:32px;width:auto;"></div><p style="font-size:12px;opacity:0.6;">〒104-0061 東京都中央区銀5-13-16 8F</p></div><div class="footer-links"><h4>サービス</h4><ul><li><a href="services.html">ファクタリング</a></li><li><a href="services.html#salary">給与前払い</a></li></ul></div><div class="footer-links"><h4>会社情報</h4><ul><li><a href="about.html">私たちについて</a></li><li><a href="company.html">会社概要</a></li><li><a href="security.html">安心への取り組み</a></li><li><a href="privacy.html">プライバシーポリシー</a></li></ul></div><div class="footer-links"><h4>お問い合わせ</h4><ul><li><a href="contact.html">お問い合わせフォーム</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Enjin Payment Service Co., Ltd. All Rights Reserved.</p></div></div></footer>
-`;
-document.addEventListener('DOMContentLoaded',()=>{const h=document.getElementById('site-header');const f=document.getElementById('site-footer');if(h)h.innerHTML=SITE_HEADER;if(f)f.innerHTML=SITE_FOOTER;if(!document.body.classList.contains('page-contact')){const fab=document.getElementById('site-fab');if(fab)fab.innerHTML=SITE_FAB;}const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('active');obs.unobserve(en.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));const hb=document.querySelector('.hamburger');const nav=document.querySelector('nav');const ov=document.querySelector('.nav-overlay');if(hb&&nav&&ov){hb.addEventListener('click',()=>{hb.classList.toggle('active');nav.classList.toggle('open');ov.classList.toggle('active');document.body.style.overflow=nav.classList.contains('open')?'hidden':'';});ov.addEventListener('click',()=>{hb.classList.remove('active');nav.classList.remove('open');ov.classList.remove('active');document.body.style.overflow='';});}document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{q.parentElement.classList.toggle('active');});});});
+(function() {
+  // Logo data is loaded from logo-data.js which must be included before this script
+  var LOGO_NORMAL = window.__EPS_LOGO_NORMAL || '';
+  var LOGO_WHITE = window.__EPS_LOGO_WHITE || '';
+
+  function getNavLinks() {
+    return [
+      {href: 'index.html', text: 'ホーム'},
+      {href: 'about.html', text: '私たちについて'},
+      {href: 'services.html', text: 'サービス'},
+      {href: 'company.html', text: '会社情報'},
+      {href: 'security.html', text: '安心への取り組み'}
+    ];
+  }
+
+  function buildNavItems() {
+    var links = getNavLinks();
+    var html = '';
+    links.forEach(function(link) {
+      html += '<li><a href="' + link.href + '">' + link.text + '</a></li>';
+    });
+    return html;
+  }
+
+  function injectHeader() {
+    var el = document.getElementById('shared-header');
+    if (!el) return;
+    el.innerHTML = '<header class="header" id="main-header">' +
+      '<div class="container">' +
+      '<div class="header-content">' +
+      '<a href="index.html" class="logo">' +
+      '<img src="' + LOGO_NORMAL + '" alt="Enjin Payment Service" style="height:40px;width:auto;max-width:220px;object-fit:contain;">' +
+      '</a>' +
+      '<nav class="main-nav" id="main-nav">' +
+      '<ul>' + buildNavItems() + '</ul>' +
+      '</nav>' +
+      '<a href="contact.html" class="btn btn-primary header-cta">お問い合わせ</a>' +
+      '<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="メニュー">' +
+      '<span></span><span></span><span></span>' +
+      '</button>' +
+      '</div></div></header>';
+    var toggle = document.getElementById('mobile-menu-toggle');
+    var nav = document.getElementById('main-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        toggle.classList.toggle('active');
+      });
+    }
+  }
+
+  function injectFooter() {
+    var el = document.getElementById('shared-footer');
+    if (!el) return;
+    el.innerHTML = '<footer class="footer">' +
+      '<div class="container">' +
+      '<div class="footer-content">' +
+      '<div class="footer-info">' +
+      '<a href="index.html" class="footer-logo">' +
+      '<img src="' + LOGO_WHITE + '" alt="Enjin Payment Service" style="height:32px;width:auto;max-width:200px;object-fit:contain;">' +
+      '</a>' +
+      '<p class="footer-address">〒104-0061 東京都中央区銀座5-13-16 8F</p>' +
+      '</div>' +
+      '<div class="footer-links">' +
+      '<div class="footer-column"><h4>サービス</h4><ul>' +
+      '<li><a href="services.html">ファクタリング</a></li>' +
+      '<li><a href="services.html#salary">給与前払い</a></li>' +
+      '</ul></div>' +
+      '<div class="footer-column"><h4>会社情報</h4><ul>' +
+      '<li><a href="about.html">私たちについて</a></li>' +
+      '<li><a href="company.html">会社概要</a></li>' +
+      '<li><a href="security.html">安心への取り組み</a></li>' +
+      '<li><a href="privacy.html">プライバシーポリシー</a></li>' +
+      '</ul></div>' +
+      '<div class="footer-column"><h4>お問い合わせ</h4><ul>' +
+      '<li><a href="contact.html">お問い合わせフォーム</a></li>' +
+      '</ul></div>' +
+      '</div></div>' +
+      '<div class="footer-bottom"><p>&copy; 2026 Enjin Payment Service Co., Ltd. All Rights Reserved.</p></div>' +
+      '</div></footer>';
+  }
+
+  function injectFAB() {
+    var el = document.getElementById('shared-fab');
+    if (!el) return;
+    el.innerHTML = '<a href="contact.html" class="fab-contact" title="お問い合わせ">' +
+      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>' +
+      '</a>';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    injectHeader();
+    injectFooter();
+    injectFAB();
+  });
+})();
