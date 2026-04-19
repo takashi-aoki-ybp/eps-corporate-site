@@ -24,7 +24,7 @@
   }
 
   function injectHeader() {
-    var el = document.getElementById('shared-header');
+    var el = document.getElementById('site-header');
     if (!el) return;
     el.innerHTML = '<header class="header" id="main-header">' +
       '<div class="container">' +
@@ -51,7 +51,7 @@
   }
 
   function injectFooter() {
-    var el = document.getElementById('shared-footer');
+    var el = document.getElementById('site-footer');
     if (!el) return;
     el.innerHTML = '<footer class="footer">' +
       '<div class="container">' +
@@ -82,7 +82,7 @@
   }
 
   function injectFAB() {
-    var el = document.getElementById('shared-fab');
+    var el = document.getElementById('site-fab');
     if (!el) return;
     el.innerHTML = '<a href="contact.html" class="fab-contact" title="お問い合わせ">' +
       '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>' +
