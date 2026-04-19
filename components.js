@@ -1,7 +1,6 @@
 (function() {
-  // Logo data is loaded from logo-data.js which must be included before this script
-  var LOGO_NORMAL = window.__EPS_LOGO_NORMAL || '';
-  var LOGO_WHITE = window.__EPS_LOGO_WHITE || '';
+  var LOGO_NORMAL = 'logo_normal.png';
+  var LOGO_WHITE = 'logo_white.png';
 
   function getNavLinks() {
     return [
@@ -59,7 +58,7 @@
       '<a href="index.html" class="footer-logo">' +
       '<img src="' + LOGO_WHITE + '" alt="Enjin Payment Service" style="height:32px;width:auto;max-width:200px;object-fit:contain;">' +
       '</a>' +
-      '<p class="footer-address">〒104-0061 東京都中央区銀座5-13-16 8F</p>' +
+      '<p class="footer-address">〒104-0061 東京都中央区銀5-13-16 8F</p>' +
       '</div>' +
       '<div class="footer-links">' +
       '<div class="footer-column"><h4>サービス</h4><ul>' +
