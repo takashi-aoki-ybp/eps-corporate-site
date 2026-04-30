@@ -7,7 +7,8 @@ ul { list-style: none; }
 .container { max-width: var(--container); margin: 0 auto; padding: 0 30px; }
 
 /* Header & Nav */
-header { height: 100px; display: flex; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.98); z-index: 2600; }
+#site-header { position: sticky; top: 0; z-index: 2600; }
+header { height: 100px; display: flex; align-items: center; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.98); }
 header .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; transition: opacity 0.3s; white-space: nowrap; }
 .logo:hover { opacity: 0.7; }
@@ -264,7 +265,7 @@ footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
    =========================================== */
 .eps-section { padding: clamp(60px,10vw,120px) 0; position: relative; }
 .eps-section-head { text-align: center; margin-bottom: clamp(40px,6vw,64px); }
-.eps-label { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 500; font-style: italic; letter-spacing: 0.3em; color: var(--primary); text-transform: uppercase; display: inline-block; margin-bottom: 16px; position: relative; padding-left: 40px; }
+.eps-label { font-family: var(--font-main); font-size: 11px; font-weight: 800; letter-spacing: 0.2em; color: var(--primary); text-transform: uppercase; display: inline-block; margin-bottom: 16px; position: relative; padding-left: 40px; }
 .eps-label::before { content: ""; position: absolute; left: 0; top: 50%; width: 28px; height: 1px; background: var(--primary); }
 .eps-title { font-family: var(--font-main); font-weight: 700; font-size: clamp(24px,3.6vw,40px); color: var(--text); line-height: 1.5; margin-bottom: 8px; }
 .eps-title .eps-accent { color: var(--primary); }
@@ -286,7 +287,7 @@ footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
 .reasons-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .reason-card { background: var(--bg-alt); padding: 40px 28px; border-radius: 4px; text-align: center; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; border-top: 3px solid var(--primary); }
 .reason-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-.reason-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-style: italic; font-weight: 600; color: var(--primary); opacity: 0.12; position: absolute; top: 12px; right: 20px; line-height: 1; }
+.reason-num { font-family: var(--font-main); font-size: 48px; font-weight: 800; color: var(--primary); opacity: 0.08; position: absolute; top: 12px; right: 20px; line-height: 1; }
 .reason-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; position: relative; z-index: 1; }
 .reason-desc { font-size: 14px; color: var(--text-muted); line-height: 1.8; position: relative; z-index: 1; }
 
@@ -302,12 +303,12 @@ footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
 /* Mechanism */
 .factoring-mech { background: #fff; border-radius: 8px; padding: clamp(32px,4vw,56px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); margin-bottom: 48px; }
 .mech-title { text-align: center; margin-bottom: 40px; }
-.mech-title-en { display: block; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; font-weight: 500; letter-spacing: 0.3em; color: var(--primary); margin-bottom: 8px; }
+.mech-title-en { display: block; font-family: var(--font-main); font-size: 11px; font-weight: 800; letter-spacing: 0.2em; color: var(--primary); text-transform: uppercase; margin-bottom: 8px; }
 .mech-title-jp { display: block; font-family: var(--font-main); font-weight: 700; font-size: 22px; color: var(--text); }
 .mech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .mech-card { background: var(--bg-alt); border-radius: 8px; padding: 28px 24px; border: 1px solid var(--border); }
 .mech-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
-.mech-num { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; font-weight: 600; color: var(--primary); }
+.mech-num { font-family: var(--font-main); font-size: 22px; font-weight: 800; color: var(--primary); }
 .mech-card-head h4 { font-size: 17px; font-weight: 700; }
 .mech-diagram { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 24px 0; flex-wrap: wrap; }
 .mech-party { text-align: center; padding: 16px 20px; border-radius: 8px; min-width: 100px; }
@@ -326,7 +327,7 @@ footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
 .pc-pros { border-top: 3px solid var(--primary); }
 .pc-cons { border-top: 3px solid #999; background: #fafafa; }
 .pc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px dashed var(--border); }
-.pc-badge { font-family: 'Cormorant Garamond', serif; font-size: 10px; font-style: italic; font-weight: 600; letter-spacing: 0.2em; padding: 4px 10px; border-radius: 2px; }
+.pc-badge { font-family: var(--font-main); font-size: 10px; font-weight: 800; letter-spacing: 0.2em; padding: 4px 10px; border-radius: 2px; }
 .pc-badge-pros { background: var(--primary); color: #fff; }
 .pc-badge-cons { background: #999; color: #fff; }
 .pc-head h3 { font-size: 20px; font-weight: 700; }
@@ -344,7 +345,7 @@ footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
 .usecase-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, #d44 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
 .usecase-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
 .usecase-card:hover::before { transform: scaleX(1); }
-.usecase-num-bg { position: absolute; top: 16px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 52px; font-style: italic; font-weight: 600; color: var(--primary); opacity: 0.08; line-height: 1; }
+.usecase-num-bg { position: absolute; top: 16px; right: 20px; font-family: var(--font-main); font-size: 52px; font-weight: 800; color: var(--primary); opacity: 0.06; line-height: 1; }
 .usecase-badge { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 12px; padding: 4px 12px; border: 1px solid rgba(164,33,45,0.2); border-radius: 3px; }
 .usecase-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 14px; }
 .usecase-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
@@ -356,7 +357,7 @@ footer { background: #0c0c0c; color: #fff; padding: 120px 0 60px; }
 .flow-step { flex: 1; text-align: center; padding: 24px 16px; position: relative; }
 .flow-step::after { content: "→"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--primary); font-weight: 700; z-index: 1; }
 .flow-step:last-child::after { display: none; }
-.flow-step-num { font-family: 'Cormorant Garamond', serif; font-size: 12px; font-weight: 600; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 12px; padding: 6px 14px; background: rgba(164,33,45,0.06); border-radius: 20px; display: inline-block; }
+.flow-step-num { font-family: var(--font-main); font-size: 11px; font-weight: 800; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 12px; padding: 6px 14px; background: rgba(164,33,45,0.06); border-radius: 20px; display: inline-block; }
 .flow-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
 .flow-step p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
 
